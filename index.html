@@ -11,6 +11,7 @@
     <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
+
     <nav>
         <div class="nav-wrapper grey darken-3">
           <a href="#" class="brand-logo">I'm Hungry  <i class="large material-icons">local_dining</i> </a>
@@ -24,9 +25,95 @@
         </div>
     </nav>
 
-    <body>
+  <body>   <!-- Page Layout here -->
+   <div class="row">
 
-      <h4>Now let's search hardcoded for pizza.</h4>
+    <div class="col s3"> <!-- left side navigation panel -->
+
+      <div class = "row">  <!--Food choice-->
+        <div class="input-field col s9" id='food'>
+        
+          <p class = "left"> What would you like to eat?</p>
+          <i class="material-icons prefix"></i>
+          <p class="left">
+              <input class = "left" id="icon_prefix2" style = "width:100%" placeholder="pizza" class="materialize-textarea">
+          </p>
+        </div>
+      </div>
+
+      <div class = "row">  <!--zipcode-->
+        <div class="input-field col s9" id='zip'>
+        
+          <p class = "left"> What is your Zipcode?</p>
+          <i class="material-icons prefix"></i>
+          <p class="left">
+              <input class = "left" id="icon_prefix2" style = "width:100%" placeholder="95020" class="materialize-textarea">
+          </p>
+        </div>
+      </div>
+
+      <div class = "row">  <!--number of recipes-->
+        <div class="col s9">
+            <p class = "left">How many recipes would you like to see?</p>
+            <br>
+
+            <p class="left">
+                <a class='dropdown-trigger btn' href='#' data-target='dropdown4'>Select</a>
+            </p>
+
+            <ul id='dropdown4' class='dropdown-content'>
+                <li><a class="recipeOption" id="1" href="#!">one</a></li>
+                <li><a class="recipeOption" id="5" href="#!">five</a></li>
+                <li><a class="recipeOption" id="10" href="#!">ten</a></li>
+            </ul>
+            <br>
+        </div>
+      </div>
+
+      <div class = "row">  <!-- Guide me-->
+        <div class="col s9">
+          <p class="left">
+            <a id="ingredient-input" class="waves-effect waves-light btn"> Guide me</a>
+            <label for="icon_prefix2"></label>
+         </p>
+        </div>
+      </div>
+
+      <div class = "row">  <!--clear the recipes-->
+        <div class="col s9">
+          <p class="left">
+            <a id="clear" class="waves-effect waves-light btn"> Clear up</a>
+            <label for="icon_prefix2"></label>
+         </p>
+        </div>
+      </div>
+
+      <div class = "row">
+        <div>
+          Image Rating:
+          <select id="rating">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+          </select>
+        </div>
+        <button onclick="myFunction()">Search!</button>
+      </div>
+    </div>
+
+    <div class="row">   <!-- central page content  -->
+      <div class="col s9">
+        <header>
+        <h4>Now let's choose what we want to eat - search hardcoded for pizza.</h4>
+        </header>
+        <div id="response-header"></div>
+        <div id="response-container"></div>
+      </div>
+    </div>
+
+  
+
+      <!--<h4>Now let's search hardcoded for pizza.</h4>
       <div>
         Image Rating:
         <select id="rating">
@@ -37,7 +124,7 @@
       </div>
       <button onclick="myFunction()">Search!</button>
       <div id="response-header"></div>
-      <div id="response-container"></div>
+      <div id="response-container"></div>-->
 
 <!--cards to display content. Images will come from api fetch
         <div class="col s12 m7">
@@ -80,7 +167,7 @@
               <div class="row">
                 <div class="col l6 s12">
                   <h5 class="white-text">Challenge project team</h5>
-                  <p class="grey-text text-lighten-4"> Priya, Scott, Neil and Anita's project and link to their profiles</p>
+                  <p class="grey-text text-lighten-4"> Priya, Scott, Neil, Theresa and Anita's project and link to their profiles</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                   <h5 class="white-text">Links</h5>
@@ -104,6 +191,8 @@
       <!--JavaScript at end of body for optimized loading-->
       <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <!-- jQuery JS -->
+      <script src="https://code.jquery.com/jquery.js"></script>
       <!-- link to jquery -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <!-- link to font awesome -->

@@ -1,4 +1,6 @@
+
 function myFunction() {
+
   fetch(
     // Make a fetch request to Wikipedia to get a random article title
     'https://api.spoonacular.com/recipes/complexSearch?query=pizza&number=1&apiKey=b57026cf75ef47e3a58d4bc313ecba6d'
