@@ -1,0 +1,65 @@
+* { padding: 0.001vw; margin: 0.001vw; }
+
+html, body, .row, .container-fluid {
+    height: 100%;
+}
+
+.jumbotron {
+    line-height: 2.0;
+    background-color: rgb(213, 220, 237);
+    border: 0.1vw solid lightgrey;
+    margin-top: 2.0vw;
+    padding-top: 2.0vw;
+    color: #074779;
+}
+
+.city{
+    font-size: 3vw;
+    font-weight: 500;
+}
+#search-bar{
+    background-color: #babec2;
+    height: 100% ;
+}
+
+.card-deck .card{
+    background-color:#587da5;
+    color:white;
+    padding: 1vw;
+}
+
+.favorable{
+    background-color: #28A745;
+    color:white;
+    padding: 0.8vw;
+}
+
+.moderate{
+    background-color: #FFC108;
+    color:white;
+    padding: 0.8vw;
+}
+
+.severe{
+    background-color: #DC3545;
+    color:white;
+    padding: 0.8vw;
+}
+
+.cityButtons{
+    background-color: white;
+    border: 0.1vw solid rgb(179, 175, 175);
+    text-align: left;
+    color: #32637a;
+    padding: 1vw;
+
+}
+
+#search-history{
+   display: flex;
+}
+
+#city-input{
+    position: relative;
+    left: 1vw;
+}
