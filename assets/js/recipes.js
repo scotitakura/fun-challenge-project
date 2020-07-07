@@ -11,7 +11,19 @@ var numberOfRecipeCards = 3;
 var displayRecipeEl = document.querySelector("#display-recipe");
 
 // variable to count for local storage
-var prevSearch = 0
+var prevSearch = localStorage.length
+
+function toastSuggestion(){
+    console.log("add toast time")
+    if(prevSearch > 0){
+        var firstSearch = localStorage[0]
+        M.toast({html: `Craving ${firstSearch} again?`, classes: 'rounded'})
+
+
+    }
+}
+
+toastSuggestion()
 
 // neil - takes title, image and link to display on page
 function displayRecipes(recipeTitle, recipeImg, recipeLink) {
