@@ -16,7 +16,7 @@
         <div class="nav-wrapper grey darken-3">
           <a href="#" class="brand-logo">I'm Hungry  <i class="large material-icons">local_dining</i> </a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <!--
+            <!-- here we have the option to include links in the nav panel
             <li><a href="sass.html">Sass</a></li>
             <li><a href="badges.html">Components</a></li>
             <li><a href="collapsible.html">JavaScript</a></li>
@@ -30,54 +30,46 @@
 
     <div class="col s3"> <!-- left side navigation panel -->
 
-      <div class = "row">  <!--Food choice-->
-        <div class="input-field col s9" id='food'>
-        
-          <p class = "left"> What would you like to eat?</p>
-          <i class="material-icons prefix"></i>
-          <p class="left">
-              <input class = "left" id="icon_prefix2" style = "width:100%" placeholder="pizza" class="materialize-textarea">
-          </p>
-        </div>
-      </div>
-
       <div class = "row">  <!--zipcode-->
-        <div class="input-field col s9" id='zip'>
-        
-          <p class = "left"> What is your Zipcode?</p>
-          <i class="material-icons prefix"></i>
-          <p class="left">
-              <input class = "left" id="icon_prefix2" style = "width:100%" placeholder="95020" class="materialize-textarea">
-          </p>
+        <div class="input-field col s9">
+          <div class="card">
+            <h6 class="card-header text-uppercase">Search By Zipcode</h6>
+            <form id="zipcode-form" class="card-body">
+              <label class="form-label" for="zipcodename">Zipcode</label>
+              <input
+                name="zipcodename"
+                id="zipcodename"
+                type="text"
+                autofocus="true"
+                class="form-input"
+                placeholder="Type Zipcode"
+              />
+              <button type="submit" class="btn"> restaurants!</button>
+            </form>
+          </div>
         </div>
       </div>
 
-      <div class = "row">  <!--number of recipes-->
-        <div class="col s9">
-            <p class = "left">How many recipes would you like to see?</p>
-            <br>
-
-            <p class="left">
-                <a class='dropdown-trigger btn' href='#' data-target='dropdown4'>Select</a>
-            </p>
-
-            <ul id='dropdown4' class='dropdown-content'>
-                <li><a class="recipeOption" id="1" href="#!">one</a></li>
-                <li><a class="recipeOption" id="5" href="#!">five</a></li>
-                <li><a class="recipeOption" id="10" href="#!">ten</a></li>
-            </ul>
-            <br>
+      <div class = "row">  <!--Food Input-->
+        <div class="input-field col s9">
+          <div class="card">
+            <h6 class="card-header text-uppercase">Search by food name</h6>
+            <form id="food-input-form" class="card-body">
+              <label class="food-input-label" for= "food-name" > What would you like to eat? </label>
+              <input
+                name="food-input" 
+                id="food-input" 
+                type="text" 
+                autofocus="true" 
+                class="form-input" 
+                placeholder="eg. pizza"
+              />
+              <button type="submit" class="btn"> recipes!</button>
+            </form>
+          </div>
         </div>
       </div>
 
-      <div class = "row">  <!-- Guide me-->
-        <div class="col s9">
-          <p class="left">
-            <a id="ingredient-input" class="waves-effect waves-light btn"> Guide me</a>
-            <label for="icon_prefix2"></label>
-         </p>
-        </div>
-      </div>
 
       <div class = "row">  <!--clear the recipes-->
         <div class="col s9">
@@ -88,80 +80,20 @@
         </div>
       </div>
 
-      <div class = "row">
-        <div>
-          Image Rating:
-          <select id="rating">
-            <option value="G">G</option>
-            <option value="PG">PG</option>
-            <option value="PG-13">PG-13</option>
-          </select>
-        </div>
-        <button onclick="myFunction()">Search!</button>
       </div>
-    </div>
 
+<!--                       -->
     <div class="row">   <!-- central page content  -->
       <div class="col s9">
         <header>
-        <h4>Now let's choose what we want to eat - search hardcoded for pizza.</h4>
+        <h4>Now let's choose what we want to eat!</h4>
         </header>
         <div id="response-header"></div>
         <div id="response-container"></div>
       </div>
     </div>
 
-  
 
-      <!--<h4>Now let's search hardcoded for pizza.</h4>
-      <div>
-        Image Rating:
-        <select id="rating">
-          <option value="G">G</option>
-          <option value="PG">PG</option>
-          <option value="PG-13">PG-13</option>
-        </select>
-      </div>
-      <button onclick="myFunction()">Search!</button>
-      <div id="response-header"></div>
-      <div id="response-container"></div>-->
-
-<!--cards to display content. Images will come from api fetch
-        <div class="col s12 m7">
-            <h5 class="header">Food I would like</h5>
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
-            </div>
-        </div>
-
-        <div class="col s12 m7">
-            <h5 class="header">Zipcode where I am </h5>
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
-            </div>
-        </div>
-        </div>
-      -->
         <footer class="page-footer grey darken-3">
             <div class="container">
               <div class="row">
@@ -200,6 +132,6 @@
       <!-- link to Moment.js -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
       <!-- link to application script -->
-      <script src="./assets/js/script.js"></script>
+      <script src="./assets/js/recipesZipcode2Restaurants.js"></script>
     </body>
   </html>
