@@ -1,4 +1,4 @@
-var userKeySpoon = "6376d72020d0473fb5d89f0017dbf873";
+var userKeySpoon = "a4aeaa45f2f5405fa3997ea557ef2ca0";
 
 var dishNameInputForm = document.querySelector("#food-input-form");
 var dishNameInputEl = document.querySelector("#food-input");
@@ -13,12 +13,32 @@ var displayRecipeEl = document.querySelector("#display-recipe");
 // variable to count for local storage
 var prevSearch = localStorage.length
 
-function toastSuggestion(){
-    console.log("add toast time")
-    if(prevSearch > 0){
-        var firstSearch = localStorage[0]
-        M.toast({html: `Craving ${firstSearch} again?`, classes: 'rounded'})
+function populateSearch(firstSearch) {
+    console.log("function called");
+    
+    // // Get toast DOM Element, get instance, then call dismiss function
+    // var lastRec = document.getElementById("food-input");
+    // lastRec.value = localStorage[0];
 
+    // var toastElement = document.querySelector('.toast');
+    // var toastInstance = M.Toast.getInstance(toastElement);
+    // toastInstance.dismiss();
+    
+        
+      
+
+  }
+
+
+
+function toastSuggestion(){
+    //console.log("add toast time")
+    if(prevSearch > 2){
+        var firstSearch = localStorage[0]
+        M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch(${firstSearch})" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
+
+        var toastAction = document.querySelector(".toast-action")
+        console.log(toastAction)
 
     }
 }
@@ -31,8 +51,10 @@ function displayRecipes(recipeTitle, recipeImg, recipeLink) {
     
     //get needed variables
     var recipeCard = `
+    
+
     <div class = "card">
-    <a href = "${recipeLink}" class = ""><h3 class = "">${recipeTitle}</h3></a>
+    <a href = "${recipeLink}" class = ""><h3 class = "top-left">${recipeTitle}</h3></a>
     </br>
     <a href = "${recipeLink}" class = ""><img src = "${recipeImg}"></a>  
     </div>
@@ -86,8 +108,8 @@ function getRecipeRepos(dishName) {
         if (response.ok) {
 
             //Neil Local Storage
-            localStorage.setItem(prevSearch, dishName)
-            prevSearch++
+            // localStorage.setItem(prevSearch, dishName)
+            // prevSearch++
 
 
             response.json().then(function(data) {
@@ -108,6 +130,9 @@ function getRecipeRepos(dishName) {
                 numberOfRecipeCards+=3;
                 window.localStorage.setItem('recipes', JSON.stringify(ids));
                 window.localStorage.setItem('index', index);
+
+                localStorage.setItem(prevSearch, dishName)
+                prevSearch++
             })
         } else {
             //need to make Modal
