@@ -1,6 +1,6 @@
-var userKeySpoon = "037fad5998184d2eae5fae39c3814d71";
+var userKeySpoon = "a4aeaa45f2f5405fa3997ea557ef2ca0";
 
-console.log(obj.cuisines)
+//console.log(obj.cuisines)
 
 // var dishNameInputEl = document.querySelector("#user-food-input");
 //var dishNumberInputEl = document.querySelector("#result-number");
@@ -10,6 +10,40 @@ var numberOfRecipeCards = 3;
 
 // neil
 var displayRecipeEl = document.querySelector("#recipe-display");
+
+var prevSearch = localStorage.length
+
+function populateSearch(firstSearch) {
+    console.log("function called");
+    
+    // // Get toast DOM Element, get instance, then call dismiss function
+    // var lastRec = document.getElementById("food-input");
+    // lastRec.value = localStorage[0];
+
+    // var toastElement = document.querySelector('.toast');
+    // var toastInstance = M.Toast.getInstance(toastElement);
+    // toastInstance.dismiss();
+    
+        
+      
+
+  }
+
+  function toastSuggestion(){
+    console.log("add toast time")
+    if(prevSearch > 2 ){
+        var firstSearch = localStorage[0]
+        M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch(${firstSearch})" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
+//<button onclick= "populateSearch(${firstSearch})"
+        var toastAction = document.querySelector(".toast-action")
+        console.log(toastAction)
+        console.log(prevSearch)
+
+    }
+}
+
+toastSuggestion()
+
 
 // neil - takes title, image and link to display on page
 function displayRecipes(recipeTitle, recipeImg, recipeLink) {
@@ -69,6 +103,9 @@ function getRecipeRepos(dishName) {
     + `${dishName}&number=9&instructionsRequired=true&apiKey=${userKeySpoon}`)
     .then(function(response) {
         if (response.ok) {
+            localStorage.setItem(prevSearch, dishName)
+            prevSearch++
+
             response.json().then(function(data) {
                 var resultsObject = data.results;
                 let ids = [];
@@ -93,7 +130,7 @@ function getRecipeRepos(dishName) {
         }
     })
 };
-console.log("The user has entered " + obj.cuisines);
+//console.log("The user has entered " + obj.cuisines);
 getRecipeRepos(obj.cuisines);
 
 // capture user input from submit event
