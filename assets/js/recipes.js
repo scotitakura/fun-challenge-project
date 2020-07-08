@@ -31,19 +31,7 @@ function populateSearch(firstSearch) {
 
 
 
-function toastSuggestion(){
-    //console.log("add toast time")
-    if(prevSearch > 2){
-        var firstSearch = localStorage[0]
-        M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch(${firstSearch})" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
 
-        var toastAction = document.querySelector(".toast-action")
-        console.log(toastAction)
-
-    }
-}
-
-toastSuggestion()
 
 // neil - takes title, image and link to display on page
 function displayRecipes(recipeTitle, recipeImg, recipeLink) {
