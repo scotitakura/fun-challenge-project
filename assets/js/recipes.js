@@ -13,36 +13,23 @@ var displayRecipeEl = document.querySelector("#recipe-display");
 
 var prevSearch = localStorage.length
 
-function populateSearch(firstSearch) {
-    console.log("function called");
+// function populateSearch(firstSearch) {
+//     console.log("function called");
     
-    // // Get toast DOM Element, get instance, then call dismiss function
-    // var lastRec = document.getElementById("food-input");
-    // lastRec.value = localStorage[0];
+//     // // Get toast DOM Element, get instance, then call dismiss function
+//     // var lastRec = document.getElementById("food-input");
+//     // lastRec.value = localStorage[0];
 
-    // var toastElement = document.querySelector('.toast');
-    // var toastInstance = M.Toast.getInstance(toastElement);
-    // toastInstance.dismiss();
+//     // var toastElement = document.querySelector('.toast');
+//     // var toastInstance = M.Toast.getInstance(toastElement);
+//     // toastInstance.dismiss();
     
         
       
 
-  }
+//   }
 
-  function toastSuggestion(){
-    console.log("add toast time")
-    if(prevSearch > 2 ){
-        var firstSearch = localStorage[0]
-        M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch(${firstSearch})" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
-//<button onclick= "populateSearch(${firstSearch})"
-        var toastAction = document.querySelector(".toast-action")
-        console.log(toastAction)
-        console.log(prevSearch)
-
-    }
-}
-
-toastSuggestion()
+  
 
 
 // neil - takes title, image and link to display on page

@@ -5,6 +5,24 @@ var dishInput = document.querySelector("#user-food-input").value;
 var dishNameInputForm = document.querySelector("#search-button");
 // for alert modal
 var modalAlertCard = document.querySelector("#modal-display");
+var prevSearch = localStorage.length
+
+function toastSuggestion(){
+      console.log("add toast time")
+      if(prevSearch > 2){
+          var firstSearch = localStorage[0]
+          M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch(${firstSearch})" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
+    //<button onclick= "populateSearch(${firstSearch})"
+          var toastAction = document.querySelector(".toast-action")
+          console.log(toastAction)
+          console.log(prevSearch)
+    
+      }
+    }
+}
+    toastSuggestion()
+
+
 
 // creates modal to alert issues to user
 function userAlert(message) {
