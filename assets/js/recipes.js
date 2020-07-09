@@ -1,36 +1,35 @@
 var userKeySpoon = "a4aeaa45f2f5405fa3997ea557ef2ca0";
 
-var dishNameInputForm = document.querySelector("#food-input-form");
-var dishNameInputEl = document.querySelector("#food-input");
+//console.log(obj.cuisines)
+
+// var dishNameInputEl = document.querySelector("#user-food-input");
 //var dishNumberInputEl = document.querySelector("#result-number");
 let displayMore = document.querySelector('#display-more > button');
 
 var numberOfRecipeCards = 3;
 
 // neil
-var displayRecipeEl = document.querySelector("#display-recipe");
+var displayRecipeEl = document.querySelector("#recipe-display");
 
-// variable to count for local storage
 var prevSearch = localStorage.length
 
-function populateSearch(firstSearch) {
-    console.log("function called");
+// function populateSearch(firstSearch) {
+//     console.log("function called");
     
-    // // Get toast DOM Element, get instance, then call dismiss function
-    // var lastRec = document.getElementById("food-input");
-    // lastRec.value = localStorage[0];
+//     // // Get toast DOM Element, get instance, then call dismiss function
+//     // var lastRec = document.getElementById("food-input");
+//     // lastRec.value = localStorage[0];
 
-    // var toastElement = document.querySelector('.toast');
-    // var toastInstance = M.Toast.getInstance(toastElement);
-    // toastInstance.dismiss();
+//     // var toastElement = document.querySelector('.toast');
+//     // var toastInstance = M.Toast.getInstance(toastElement);
+//     // toastInstance.dismiss();
     
         
       
 
-  }
+//   }
 
-
-
+  
 
 
 // neil - takes title, image and link to display on page
@@ -39,10 +38,8 @@ function displayRecipes(recipeTitle, recipeImg, recipeLink) {
     
     //get needed variables
     var recipeCard = `
-    
-
     <div class = "card">
-    <a href = "${recipeLink}" class = ""><h3 class = "top-left">${recipeTitle}</h3></a>
+    <a href = "${recipeLink}" class = ""><h3 class = "">${recipeTitle}</h3></a>
     </br>
     <a href = "${recipeLink}" class = ""><img src = "${recipeImg}"></a>  
     </div>
@@ -50,7 +47,6 @@ function displayRecipes(recipeTitle, recipeImg, recipeLink) {
     var recipeContainer = document.createElement("div");
     recipeContainer.innerHTML = recipeCard;
     displayRecipeEl.appendChild(recipeContainer);
-
 };
 
 // take repos to get Id of from results
@@ -71,22 +67,22 @@ function getID(recipeId) {
     })
 };
 
-displayMore.addEventListener('click', function(event){
-    let recipes = JSON.parse(window.localStorage.getItem('recipes'));
-    let index = parseInt(window.localStorage.getItem('index'));
-    console.log(index);
-    if (index < recipes.length) {
-        for ( i=0; i<3; i++) {     
-            let ids = recipes[index+i];
-            console.log(ids);
-            getID(ids);
-        }
-        index+=3
-        window.localStorage.setItem('index', index)
-    } else {
-        alert("There are no more results.")
-    }
-});
+// displayMore.addEventListener('click', function(event){
+//     let recipes = JSON.parse(window.localStorage.getItem('recipes'));
+//     let index = parseInt(window.localStorage.getItem('index'));
+//     console.log(index);
+//     if (index < recipes.length) {
+//         for ( i=0; i<3; i++) {     
+//             let ids = recipes[index+i];
+//             console.log(ids);
+//             getID(ids);
+//         }
+//         index+=3
+//         window.localStorage.setItem('index', index)
+//     } else {
+//         userAlert("There are no more results.");
+//     }
+// });
 
 // fetch spoonacular for JSON data using user inputs
 function getRecipeRepos(dishName) {
@@ -94,11 +90,8 @@ function getRecipeRepos(dishName) {
     + `${dishName}&number=9&instructionsRequired=true&apiKey=${userKeySpoon}`)
     .then(function(response) {
         if (response.ok) {
-
-            //Neil Local Storage
-            // localStorage.setItem(prevSearch, dishName)
-            // prevSearch++
-
+            localStorage.setItem(prevSearch, dishName)
+            prevSearch++
 
             response.json().then(function(data) {
                 var resultsObject = data.results;
@@ -118,34 +111,28 @@ function getRecipeRepos(dishName) {
                 numberOfRecipeCards+=3;
                 window.localStorage.setItem('recipes', JSON.stringify(ids));
                 window.localStorage.setItem('index', index);
-
-                localStorage.setItem(prevSearch, dishName)
-                prevSearch++
             })
         } else {
-            //need to make Modal
-            alert("Error: " + response.statusText);
+            userAlert("Error: " + response.statusText);
         }
     })
 };
+//console.log("The user has entered " + obj.cuisines);
+getRecipeRepos(obj.cuisines);
 
 // capture user input from submit event
 function submitHandler(event) {
     event.preventDefault();
     // get value from input element
-    var dishInput = dishNameInputEl.value.trim();
-    console.log("The user has entered " + dishInput);
     
-    if (dishInput) {
+    if (userCuisineName) {
         dishNameInputEl.value = "";
         // go to fetch data from spoonacular API
-        getRecipeRepos(dishInput);
+        getRecipeRepos(userCuisineName);
     } else {
-        //need to make Modal
-        alert("Please enter a valid dish name.");
+        userAlert("Please enter a valid dish name.");
     }
+    console.log();
 };
 
-dishNameInputForm.addEventListener("submit", submitHandler);
-
-
+//dishNameInputForm.addEventListener("submit", submitHandler);

@@ -1,46 +1,77 @@
+var zipAPIKey = "JVSMA0VD62UG6J85ZKQY";
+var searchButton = document.querySelector("#search-button");
+var clearButton = document.querySelector("#clear-button");
+var dishInput = document.querySelector("#user-food-input").value;
+var dishNameInputForm = document.querySelector("#search-button");
+// for alert modal
+var modalAlertCard = document.querySelector("#modal-display");
+var prevSearch = localStorage.length
 
-function myFunction() {
-
-  fetch(
-    // Make a fetch request to Wikipedia to get a random article title
-    'https://api.spoonacular.com/recipes/complexSearch?query=pizza&number=1&apiKey=b57026cf75ef47e3a58d4bc313ecba6d'
-    //'https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=1&origin=*'
-  )
-    .then(function(wikiResponse) {
-      return wikiResponse.json();
-    })
-    .then(function(wikiResponse) {
-      // Create a variable to hold the title of the Wikipedia article
-      var searchTerm = wikiResponse.results[0].title;
-
-      // Display the article title above the GIF as a <h2> heading
-      var responseHeaderEl = document.querySelector('#response-header');
-      responseHeaderEl.innerHTML = '<h2>' + searchTerm + '</h2>';
-
-      var rating = document.getElementById('rating').value;
-
-      // Return a fetch request to the Giphy search API with the article title and rating parameters
-      return fetch(
-        'https://api.giphy.com/v1/gifs/search?q=' +
-          searchTerm +
-          '&rating=' +
-          rating +
-          '&api_key=HvaacROi9w5oQCDYHSIk42eiDSIXH3FN&limit=1'
-      );
-    })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(response) {
-      if (response.data.length === 0) {
-        console.log('Giphy could not find anything for that.');
-      } else {
-        console.log(response.data[0]);
-        var responseContainerEl = document.querySelector('#response-container');
-        responseContainerEl.innerHTML = '';
-        var gifImg = document.createElement('img');
-        gifImg.setAttribute('src', response.data[0].images.fixed_height.url);
-        responseContainerEl.appendChild(gifImg);
+function toastSuggestion(){
+      console.log("add toast time")
+      if(prevSearch > 2){
+          var firstSearch = localStorage[0]
+          M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch(${firstSearch})" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
+    //<button onclick= "populateSearch(${firstSearch})"
+          var toastAction = document.querySelector(".toast-action")
+          console.log(toastAction)
+          console.log(prevSearch)
+    
       }
-    });
+    }
 }
+    toastSuggestion()
+
+
+
+// creates modal to alert issues to user
+function userAlert(message) {
+    var modalAlertDOM = document.createElement("div");
+    modalAlertCard.appendChild(modalAlertDOM);
+    modalAlertDOM.innerHTML = `
+    <div id="modal2" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h5>${message}</h5>
+      </div>
+        <div class="modal-footer">
+          <a href="index.html" class="modal-close waves-effect waves-green btn-flat">Got it.</a>
+        </div>
+      </div>
+    </div>`
+    var elem = document.querySelector('#modal2');
+    var instance = M.Modal.init(elem);
+    instance.open();
+};
+
+// at onClick of Search button
+searchButton.addEventListener("click", function (){
+  var userCuisineName = document.querySelector("#user-food-input").value
+  var userZipInput = document.querySelector("#user-zipcode-input").value
+  console.log(dishInput)
+  console.log(userCuisineName, userZipInput)
+  if(userCuisineName && userZipInput) {
+    fetch(`https://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/${userZipInput}?key=${zipAPIKey}`)
+    .then(function(response) {
+        if (response.ok) {
+            return response.json();
+        } else {
+          userAlert("It seems like your search has no match. Try again!");
+        }
+      })
+      .then(function(response) {
+        zipToLat = response.Latitude.toFixed(1);
+        zipToLon = response.Longitude.toFixed(1);
+        window.location.href = `indexA.html?&lat=${zipToLat}&lon=${zipToLon}&cuisines=${userCuisineName}`
+      })
+      .catch(err => {
+        userAlert("Please enter a valid zip code.");
+      });
+  } else {
+    userAlert("Please enter what food you're craving for and what zip code you're in.");
+  }  
+});
+
+// clear all search history
+clearButton.addEventListener("click", function() {
+  localStorage.clear();
+});

@@ -1,11 +1,20 @@
-var userKeyZomato = "fd85c6b350ae3ae83bcb37148a9f1d69";
+var userKeyZomato = "fa3c32034df355627e248bca18cee942";
 var restaurantDisplay = document.querySelector("#restaurant-display");
+var displayMoreRestaurants = document.querySelector("#display-more-restaurants");
+
+var locationPath = window.location.search;
+var vals = locationPath.split("&");
+vals = vals.slice(1);
+var obj = {}
+for(let i = 0; i < vals.length; i++) {
+  let key_val = vals[i].split("=");
+  if(key_val[1].includes("%20")) {
+    key_val[1] = key_val[1].split("%20").join(" ")
+  };
+  obj[key_val[0]] =  key_val[1];
+};
 
 // User Input hard variables
-var zipToLat = "37.8";
-var zipToLon = "-122.3";
-var userCuisine = "Deli";
-
 var numberOfCards = 3;
 /**
  * Functions to make cards and render
@@ -20,9 +29,9 @@ var makeCardDOM = function(restaurant){
   `<div id="card-${restaurant.id}">
     <h3 class="restaurant-name">${restaurant.name}</h3>
     <div class="restaurant-cuisine">${restaurant.cuisines}</div>
-    <div class="restaurant-address">Address: ${restaurant.address}</div>
+    <div class="restaurant-address">Address: ${restaurant.location.address}</div>
     <div class="restaurant-timings">Schedule: ${restaurant.timings}</div>
-    <a class="restaurant-url" href=${restaurant.menu_url}>Website</a>
+    <a class="restaurant-url" href=${restaurant.url}>Website</a>
     <div class="restaurant-tele">Telephone: ${restaurant.phone_numbers}</div>
   </div>`;
   return cardDOM; 
@@ -35,11 +44,8 @@ var make3Cards = function (restaurants, index) {
     restaurantDisplay.appendChild(makeCardDOM(rest));
   }
   numberOfCards += 3;
-  console.log(index);
   return index; // return index after making card
 };
-
-var displayMoreRestaurants = document.querySelector("#display-more-restaurants");
 
 /**
  * Function to make display more button display the next 3 from localStorage
@@ -53,27 +59,32 @@ console.log(localIndex);
   window.localStorage.setItem('index', localIndex);
 });
 
-var getRestaurants = function(){
-  fetch(`https://developers.zomato.com/api/v2.1/cuisines?lat=${zipToLat}&lon=${zipToLon}`,
+var getRestaurants = function(zipToLat, zipToLon){
+  fetch(`https://developers.zomato.com/api/v2.1/cuisines?lat=${obj.lat}&lon=${obj.lon}`,
   {headers: {
     "user-key": userKeyZomato,
     "content-type": "application/json"
   }})
   .then(function(response) {
     if (response.ok) {
-        return response.json();
+      return response.json();
     } else {
-        alert("Please enter a valid zip code.");
+      alert("Please enter a valid zip code.");
     }
   })
   .then(function(response) {
-    console.log("res: 131", response)
+    var noCuisineMatch = false;
+    var areaCuisineArray = [];
     for (var i = 0; i < response.cuisines.length; i++) {
-      if (response.cuisines[i].cuisine.cuisine_name == userCuisine) {
-        console.log(response.cuisines[i].cuisine.cuisine_id);
+      areaCuisineArray.push(response.cuisines[i].cuisine.cuisine_name);
+      areaCuisineList = areaCuisineArray.join(", ");
+      if (response.cuisines[i].cuisine.cuisine_name == obj.cuisines) {
+        console.log(response.cuisines[i].cuisine.cuisine_name);
+        noCuisineMatch = true;
         var userCuisineID = response.cuisines[i].cuisine.cuisine_id
+        console.log(userCuisineID)
 
-        fetch(`https://developers.zomato.com/api/v2.1/search?entity_type=city&lat=${zipToLat}&lon=${zipToLon}&cuisines=${userCuisineID}&sort=real_distance`,
+        fetch(`https://developers.zomato.com/api/v2.1/search?entity_type=city&count=500&lat=${obj.lat}&lon=${obj.lon}&cuisines=${userCuisineID}&sort=real_distance`,
         {headers: {
           "user-key": userKeyZomato,
           "content-type": "application/json"
@@ -86,20 +97,44 @@ var getRestaurants = function(){
           }
         })
         .then(function(response) {
-          var index = 0; 
-          console.log(response);
+          var index = 0;
           var restaurants = response.restaurants;
           window.localStorage.setItem('restaurants', JSON.stringify(restaurants));
-          
           index = make3Cards(restaurants, index);
-
-          console.log("index", index)
           window.localStorage.setItem('index', index);
-          
         });
       };
     };
+    if (!noCuisineMatch) {
+      var modalDOM = document.createElement("div");
+      restaurantDisplay.appendChild(modalDOM);
+      modalDOM.innerHTML = `
+      <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content">
+          <h3>There aren't any restaurants nearby for that cuisine!</h3>
+          <h4>Here are the cuisines available in your area:</h4>
+          <ul id="button-list"></ul>
+        </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Continue anyways to view recipies for this search</a>
+            <a href="index.html" class="modal-close waves-effect waves-green btn-flat">Go back to search menu</a>
+          </div>
+        </div>
+      </div>`
+      var buttonList = document.querySelector("#button-list");
+      for (var j = 0; j < areaCuisineArray.length; j++) {
+        var cuisineButtons = document.createElement("button");
+        cuisineButtons.setAttribute(`id`, `cuisine-button-${[j]}`);
+        buttonList.appendChild(cuisineButtons);
+
+        cuisineButtons.textContent = areaCuisineArray[j];
+        cuisineButtons.innerHTML = `
+        <a href="${`indexA.html?&lat=${obj.lat}&lon=${obj.lon}&cuisines=${cuisineButtons.textContent}`}">${areaCuisineArray[j]}</a>`
+      }
+      var elem = document.querySelector('#modal1');
+      var instance = M.Modal.init(elem);
+      instance.open();
+    };
   });
 };
-
 getRestaurants();
