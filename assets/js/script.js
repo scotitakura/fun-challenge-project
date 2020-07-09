@@ -1,17 +1,25 @@
 var zipAPIKey = "JVSMA0VD62UG6J85ZKQY";
 var searchButton = document.querySelector("#search-button");
 var clearButton = document.querySelector("#clear-button");
+var foodInput= document.getElementById('user-food-input')
 var dishInput = document.querySelector("#user-food-input").value;
 var dishNameInputForm = document.querySelector("#search-button");
 // for alert modal
 var modalAlertCard = document.querySelector("#modal-display");
+
+var ZipInput = document.getElementById('user-zipcode-input')
+
+
+//local storage var
 var prevSearch = localStorage.length
+
 
 function toastSuggestion(){
       console.log("add toast time")
       if(prevSearch > 2){
-          var firstSearch = localStorage[0]
-          M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch(${firstSearch})" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
+          var firstSearch = localStorage[1]
+        
+          M.toast({html: `Craving ${firstSearch} again? <button onclick= "populateSearch()" class="btn-flat toast-action">Click Here</button>`, classes: 'rounded '})
     //<button onclick= "populateSearch(${firstSearch})"
           var toastAction = document.querySelector(".toast-action")
           console.log(toastAction)
@@ -19,9 +27,23 @@ function toastSuggestion(){
     
       }
     }
-}
+
     toastSuggestion()
 
+
+    function populateSearch(){
+      console.log("func called")
+      
+
+    var fdInput = foodInput
+  var zInput = ZipInput
+  fdInput.value = "Chinese";
+  zInput.value = "95020"
+
+}
+
+
+    
 
 
 // creates modal to alert issues to user
@@ -53,6 +75,8 @@ searchButton.addEventListener("click", function (){
     fetch(`https://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/${userZipInput}?key=${zipAPIKey}`)
     .then(function(response) {
         if (response.ok) {
+          localStorage.setItem("zipcode", userZipInput)
+            
             return response.json();
         } else {
           userAlert("It seems like your search has no match. Try again!");
