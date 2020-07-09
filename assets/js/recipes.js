@@ -1,36 +1,14 @@
-var userKeySpoon = "a4aeaa45f2f5405fa3997ea557ef2ca0";
+var userKeySpoon = "037fad5998184d2eae5fae39c3814d71";
 
-//console.log(obj.cuisines)
+console.log(obj.cuisines)
 
 // var dishNameInputEl = document.querySelector("#user-food-input");
-//var dishNumberInputEl = document.querySelector("#result-number");
 let displayMore = document.querySelector('#display-more > button');
 
 var numberOfRecipeCards = 3;
 
 // neil
 var displayRecipeEl = document.querySelector("#recipe-display");
-
-var prevSearch = localStorage.length
-
-// function populateSearch(firstSearch) {
-//     console.log("function called");
-    
-//     // // Get toast DOM Element, get instance, then call dismiss function
-//     // var lastRec = document.getElementById("food-input");
-//     // lastRec.value = localStorage[0];
-
-//     // var toastElement = document.querySelector('.toast');
-//     // var toastInstance = M.Toast.getInstance(toastElement);
-//     // toastInstance.dismiss();
-    
-        
-      
-
-//   }
-
-  
-
 
 // neil - takes title, image and link to display on page
 function displayRecipes(recipeTitle, recipeImg, recipeLink) {
@@ -90,9 +68,6 @@ function getRecipeRepos(dishName) {
     + `${dishName}&number=9&instructionsRequired=true&apiKey=${userKeySpoon}`)
     .then(function(response) {
         if (response.ok) {
-            localStorage.setItem(prevSearch, dishName)
-            prevSearch++
-
             response.json().then(function(data) {
                 var resultsObject = data.results;
                 let ids = [];
@@ -117,7 +92,7 @@ function getRecipeRepos(dishName) {
         }
     })
 };
-//console.log("The user has entered " + obj.cuisines);
+console.log("The user has entered " + obj.cuisines);
 getRecipeRepos(obj.cuisines);
 
 // capture user input from submit event
@@ -134,5 +109,12 @@ function submitHandler(event) {
     }
     console.log();
 };
+
+var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+  accordion: false
+});
+
+M.toast({html: 'Craving some Sushi?'})      
 
 //dishNameInputForm.addEventListener("submit", submitHandler);
