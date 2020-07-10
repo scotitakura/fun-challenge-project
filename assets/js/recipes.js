@@ -3,7 +3,6 @@ var userKeySpoon = "037fad5998184d2eae5fae39c3814d71";
 console.log(obj.cuisines)
 
 // var dishNameInputEl = document.querySelector("#user-food-input");
-//var dishNumberInputEl = document.querySelector("#result-number");
 let displayMore = document.querySelector('#display-more > button');
 
 var numberOfRecipeCards = 3;
@@ -110,5 +109,12 @@ function submitHandler(event) {
     }
     console.log();
 };
+
+var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+  accordion: false
+});
+
+M.toast({html: 'Craving some Sushi?'})      
 
 //dishNameInputForm.addEventListener("submit", submitHandler);

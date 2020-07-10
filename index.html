@@ -11,43 +11,95 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
+
   <nav>
       <div class="nav-wrapper grey darken-3">
-        <a href="#" class="brand-logo">I'm Hungry<i class="large material-icons">local_dining</i></a>
+        <a href="#" class="brand-logo">The Craver<i class="large material-icons">local_dining</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
       </div>
   </nav>
+
   <body>   <!-- Page Layout here -->
     <div class="row">
-      <div class="col s3"> <!-- left side navigation panel -->
+      <div class="container grey lighten-5" class="valign-wrapper" class="col s12"> <!-- navigation panel -->
+        <!--<img class="responsive-img" src="cool_pic.jpg">-->
+
         <div class = "row">  <!--Food choice-->
-          <div class="input-field col s9" id='food'>
-            <p class = "left"> What would you like to eat?</p>
+          <div class="input-field col s12" id='food'>
+            <p class = "center"> What would you like to eat?</p>
             <i class="material-icons prefix"></i>
-            <p class="left">
-                <input class = "left" id="user-food-input" style = "width:100%" placeholder="e.g. Pizza" class="materialize-textarea">
+            <p class="center">
+                <input 
+                class = "center" 
+                id="user-food-input" 
+                style = "width:100%" 
+                placeholder="e.g. Pizza" 
+                class="materialize-textarea">
             </p>
           </div>
         </div>
+
         <div class = "row">  <!--zipcode-->
-          <div class="input-field col s9" id='zip'>
-            <p class = "left">What is your Zipcode?</p>
+          <div class="input-field col s12" id='zip'>
+            <p class = "center">What is your Zipcode?</p>
             <i class="material-icons prefix"></i>
-            <p class="left">
-                <input class = "left" id="user-zipcode-input" style = "width:100%" placeholder="e.g. 95020" class="materialize-textarea">
+            <p class="center">
+                <input 
+                class = "center" 
+                id="user-zipcode-input" 
+                style = "width:100%" 
+                placeholder="e.g. 95020" 
+                class="materialize-textarea">
             </p>
           </div>
         </div>
+
         <div class = "row">
-          <button id="search-button">Search!</button>
+
+          <button 
+            id="search-button" 
+            class="center-align btn waves-effect waves-light grey darken-3" 
+            type="submit" 
+            name="action">
+            Search!
+            <i class="material-icons right"> search </i>
+          </button>
+
         </div>
+
         <div class = "row">
-          <button id="clear-button">Clear Search History</button>
+
+          <button 
+            id="clear-button" 
+            class="center-align btn waves-effect waves-light grey darken-3" 
+            type="submit" 
+            name="action">
+            Clear Search History
+            <i class="material-icons right"> clear_all </i>
+          </button>
+
         </div>
+
+        <a onclick="M.toast({html: 'craving some Sushi again?'})" class="center-align btn waves-effect waves-light grey darken-3"class="btn"> ! </a>
+
+            <div class="row">
+              <div class="col s12 m7">
+                <div class="center-align card">
+                  <div class="card-image">
+                    <img src="./assets/images/foodimage.png">
+                    <span class="card-title">The Craver loves good food</span>
+                  </div>
+                </div>
+              </div>
+            </div>
       </div>
-      <div id="modal-display">
+
+      <div 
+      id="modal-display">
       </div>
     </div>
+
+
     <footer class="page-footer grey darken-3">
       <div class="container">
         <div class="row">
@@ -68,7 +120,7 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-        © 2020 I'm Hungry Inc.
+        © 2020 The Craver Inc.
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
       </div>
