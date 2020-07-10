@@ -26,7 +26,7 @@ function userAlert(message) {
     instance.open();
 };
 
-// at onClick of Search button
+// at onClick of Search button collect information for local storage
 searchButton.addEventListener("click", function (){
   var userCuisineName = document.querySelector("#user-food-input").value
   var userZipInput = document.querySelector("#user-zipcode-input").value
@@ -50,7 +50,8 @@ searchButton.addEventListener("click", function (){
   } else {
     userAlert("Please enter what food you're craving for and what zip code you're in.");
   }  
-    //save searches to localStorage, prep for Toast
+
+  //save searches to localStorage, prep for Toast
     window.localStorage.setItem('lastFoodSearch', userCuisineName);
     window.localStorage.setItem('lastZipSearch', userZipInput);
   });
@@ -90,5 +91,6 @@ function toastSuggestion() {
     });
   }
 };
+
 // call function to show Toast at load
 toastSuggestion();

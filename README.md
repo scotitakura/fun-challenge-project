@@ -1,5 +1,5 @@
 # fun-challenge-project: 
-This is the team 1 front-end develoipment challenge project. Theresa, Neil, Anita, Scot and Priya are members of this project
+This is the team 1 front-end development challenge project. Theresa, Neil, Anita, Scot and Priya are members of this project
 We used all the front end tools we learnt and materialize to develop this nifty webapp.
 
 # User Story Text
