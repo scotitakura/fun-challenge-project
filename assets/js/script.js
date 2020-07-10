@@ -1,8 +1,9 @@
-var zipAPIKey = "JVSMA0VD62UG6J85ZKQY";
+var zipAPIKey = "DKAL53OVWYNIRCSEKZZM";
 var searchButton = document.querySelector("#search-button");
 var clearButton = document.querySelector("#clear-button");
 var dishInput = document.querySelector("#user-food-input").value;
 var dishNameInputForm = document.querySelector("#search-button");
+
 // for alert modal
 var modalAlertCard = document.querySelector("#modal-display");
 
@@ -29,8 +30,6 @@ function userAlert(message) {
 searchButton.addEventListener("click", function (){
   var userCuisineName = document.querySelector("#user-food-input").value
   var userZipInput = document.querySelector("#user-zipcode-input").value
-  console.log(dishInput)
-  console.log(userCuisineName, userZipInput)
   if(userCuisineName && userZipInput) {
     fetch(`https://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/${userZipInput}?key=${zipAPIKey}`)
     .then(function(response) {
@@ -54,6 +53,6 @@ searchButton.addEventListener("click", function (){
 });
 
 // clear all search history
-clearButton.addEventListener("click", function() {
-  localStorage.clear();
-});
+// clearButton.addEventListener("click", function() {
+//   localStorage.clear();
+// });
