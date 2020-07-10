@@ -50,9 +50,45 @@ searchButton.addEventListener("click", function (){
   } else {
     userAlert("Please enter what food you're craving for and what zip code you're in.");
   }  
-});
-
-// clear all search history
-// clearButton.addEventListener("click", function() {
-//   localStorage.clear();
-// });
+    //save searches to localStorage, prep for Toast
+    window.localStorage.setItem('lastFoodSearch', userCuisineName);
+    window.localStorage.setItem('lastZipSearch', userZipInput);
+  });
+  
+////////////////////////////TOAST//////////////////////////////
+function toastSuggestion() {
+  console.log("toast is ready!")
+  // getItem from localStorage
+  var lastFood = window.localStorage.getItem("lastFoodSearch");
+  // if previous search exists, show Toast
+  if (lastFood) {
+    console.log(lastFood)
+    M.toast({
+      html: `Craving ${lastFood} again? <button type="click" id="re-enter-search" class="btn-flat toast-action">Click Here</button>`,
+      classes: 'rounded '
+    })
+    var reEnterSearch = document.querySelector("#re-enter-search");
+    reEnterSearch.addEventListener("click", function(){
+    // get zip code and parse
+    var lastZip = parseInt(window.localStorage.getItem("lastZipSearch"));
+    fetch(`https://api.zip-codes.com/ZipCodesAPI.svc/1.0/QuickGetZipCodeDetails/${lastZip}?key=${zipAPIKey}`)
+      .then(function(response) {
+          if (response.ok) {
+              return response.json();
+          } else {
+            userAlert("It seems like your search has no match. Try again!");
+          }
+        })
+        .then(function(response) {
+          zipToLat = response.Latitude.toFixed(1);
+          zipToLon = response.Longitude.toFixed(1);
+          window.location.href = `indexA.html?&lat=${zipToLat}&lon=${zipToLon}&cuisines=${lastFood}`
+        })
+        .catch(err => {
+          userAlert("Please enter a valid zip code.");
+        });
+    });
+  }
+};
+// call function to show Toast at load
+toastSuggestion();
