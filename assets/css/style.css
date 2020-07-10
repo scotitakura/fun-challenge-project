@@ -13,8 +13,20 @@ html, body, .row, .container-fluid {
     background-position: center center;
     background-image: url(../images/hero.jpg);
   
-   
-    
+}
+
+.inputcard{
+    border-radius: 20px;
+
+}
+
+.btn{
+    border-radius: 5px;
+}
+
+.onimage{
+    border-radius: 20px;
+
 }
 
 .nav-wrapper{
