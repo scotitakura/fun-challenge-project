@@ -23,46 +23,45 @@
   </nav>
 
   <body>   <!-- Page Layout here -->
-    <div class="valign-wrapper">
-      <div class="row"> <!-- left side navigation panel -->
-        <div class="row" class="valign-wrapper">  <!--Food choice-->
-          <div class="input-field" id='food'>
-            <h3 class="center-align"> What would you like to eat?</h3>
-            <i class="material-icons prefix"></i>
-            <p class="center-align">
-              <input class="center-align" id="user-food-input" style = "width:100%" placeholder="e.g. Pizza" class="materialize-textarea">
-            </p>
-          </div>
-        </div>
 
-        <div class="row">  <!--zipcode-->
-          <div class="input-field" id='zip'>
-            <h3 class="center-align">What is your Zipcode?</h3>
-            <i class="material-icons prefix"></i>
-            <p class="center-align">
-                <input class="center-align" id="user-zipcode-input" style = "width:100%" placeholder="e.g. 95020" class="materialize-textarea large">
-            </p>
+    <div class="valign-wrapper">
+        <div class="row"> <!-- Content panel -->
+          <div class="row" class="valign-wrapper">  <!--Food choice-->
+            <div class="input-field" id='food'>
+              <h3 class="center-align"> What would you like to eat?</h3>
+              <i class="material-icons prefix"></i>
+              <p class="center-align">
+                <input class="center-align" id="user-food-input" style = "width:100%" placeholder="e.g. Pizza" class="materialize-textarea">
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="row valign-wrapper">
+
+          <div class="row">  <!--zipcode-->
+            <div class="input-field" id='zip'>
+              <h3 class="center-align">What is your Zipcode?</h3>
+              <i class="material-icons prefix"></i>
+              <p class="center-align">
+                  <input class="center-align" id="user-zipcode-input" style = "width:100%" placeholder="e.g. 95020" class="materialize-textarea large">
+              </p>
+            </div>
+          </div>
+
           <div class="row valign-wrapper">
-            <button 
-            id="search-button" 
-            class="center-align btn waves-effect waves-light grey darken-3" 
-            type="submit" 
-            name="action">
-            Search
-            <i class="material-icons right"> search </i>
-          </button>
+            <div class="row valign-wrapper"><!--Search Button-->
+              <button 
+                id="search-button" 
+                class="center-align btn waves-effect waves-light grey darken-3" 
+                type="submit" 
+                name="action">
+                Search
+                <i class="material-icons right"> search </i>
+             </button>
+            </div>
           </div>
         </div>
-        <div class="center-align">
-          <a onclick="M.toast({html: 'craving some Sushi again?'})" class="center-align btn waves-effect waves-light grey darken-3"class="btn"> ! </a>
-        </div>
-      </div>
     </div>
 
-    <div class="row">
+    <div class="row"> <!--Food Image background-->
       <div class="center-align card">
         <div class="card-image center-align">
           <img src="./assets/images/foodimage.png">
@@ -72,6 +71,9 @@
     </div>
 
     <div id="modal-display"></div>
+
+
+    <!-- Footer-->
     <footer class="page-footer grey darken-3">
       <div class="container">
         <div class="row">
@@ -97,116 +99,6 @@
         </div>
       </div>
     </footer>
-
-    <!--JavaScript at end of body for optimized loading-->
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- link to font awesome -->
-    <script src="https://kit.fontawesome.com/326ee3d75f.js" crossorigin="anonymous"></script>
-    <!-- link to application script -->
-    <script src="./assets/js/script.js"></script>
-  </body>
-    
-  
-  <!-- <div class="row">
-      <div class="container grey lighten-5" class="valign-wrapper" class="col s12">
-        <div class = "row">
-          <div class="input-field col s12" id='food'>
-            <p class = "center"> What would you like to eat?</p>
-            <i class="material-icons prefix"></i>
-            <p class="center">
-                <input 
-                class = "center" 
-                id="user-food-input" 
-                style = "width:100%" 
-                placeholder="e.g. Pizza" 
-                class="materialize-textarea">
-            </p>
-          </div>
-        </div>
-
-        <div class = "row">
-          <div class="input-field col s12" id='zip'>
-            <p class = "center">What is your Zipcode?</p>
-            <i class="material-icons prefix"></i>
-            <p class="center">
-                <input 
-                class = "center" 
-                id="user-zipcode-input" 
-                style = "width:100%" 
-                placeholder="e.g. 95020" 
-                class="materialize-textarea">
-            </p>
-          </div>
-        </div>
-
-        <div class = "row">
-
-          <button 
-            id="search-button" 
-            class="center-align btn waves-effect waves-light grey darken-3" 
-            type="submit" 
-            name="action">
-            Search!
-            <i class="material-icons right"> search </i>
-          </button>
-
-        </div>
-
-        <div class = "row">
-
-          <button 
-            id="clear-button" 
-            class="center-align btn waves-effect waves-light grey darken-3" 
-            type="submit" 
-            name="action">
-            Clear Search History
-            <i class="material-icons right"> clear_all </i>
-          </button>
-
-        </div>
-
-        <a onclick="M.toast({html: 'craving some Sushi again?'})" class="center-align btn waves-effect waves-light grey darken-3"class="btn"> ! </a>
-
-            <div class="row">
-              <div class="col s12 m7">
-                <div class="center-align card">
-                  <div class="card-image">
-                    <img src="./assets/images/foodimage.png">
-                    <span class="card-title">The Craver loves good food</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-      </div>
-    </div>
-    <div id="modal-display"></div>
-
-    <footer class="page-footer grey darken-3">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Challenge project team</h5>
-            <p class="grey-text text-lighten-4"> Priya, Scot, Neil, Theresa and Anita's project and link to their profiles</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Scot</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Neil</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Priya</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Anita</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        © 2020 The Craver Inc.
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
-      </div>
-    </footer> -->
 
     <!--JavaScript at end of body for optimized loading-->
     <!-- Compiled and minified JavaScript -->

@@ -116,4 +116,4 @@ var instance = M.Collapsible.init(allAccordions, {
   accordion: false
 });
 
-M.toast({html: 'Craving some Sushi?'})      
+//M.toast({html: 'Craving some Sushi?'})      

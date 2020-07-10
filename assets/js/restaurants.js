@@ -125,7 +125,7 @@ var getRestaurants = function(zipToLat, zipToLon){
       modalDOM.innerHTML = `
       <div id="modal1" class="modal bottom-sheet">
         <div class="modal-content">
-          <h3>There aren't any restaurats nearby for that cuisine! You can either:</h3>
+          <h3>There aren't any restaurants nearby for that cuisine! You can either:</h3>
           <div class="row">
             <div class="col s6">
               <h4>Choose from the available cuisines in the area,</h4>
@@ -135,7 +135,7 @@ var getRestaurants = function(zipToLat, zipToLon){
               <h4>or</h4>
             </div>
             <div class="col s5">
-              <h4 href="#!" class="modal-close"><a href="#!">Continue anyways to view recipies for this search</a></h4>
+              <h4 href="#!" class="modal-close"><a href="#!">Continue anyway, to view recipies for this search</a></h4>
             </div>
           </div>
         </div>
