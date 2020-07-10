@@ -20,7 +20,8 @@ html, body, .row, .container-fluid {
 
 .inputcard{
     border-radius: 20px;
-
+    margin: 20px;
+    padding: 10px;
 }
 
 .btn{
