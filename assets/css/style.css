@@ -1,7 +1,26 @@
 * { padding: 0.001vw; margin: 0.001vw; }
 
+
+
 html, body, .row, .container-fluid {
     height: 100%;
+}
+
+.hero-image{
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../images/hero.jpg);
+    height: 450px;
+    display: grid;
+    align-items: flex-end;
+   
+    
+}
+
+.nav-wrapper{
+    padding: 7px;
 }
 
 .jumbotron {
@@ -13,6 +32,11 @@ html, body, .row, .container-fluid {
     color: #074779;
 }
 
+/* .onimage{
+    position: relative;
+    text-align: start ;
+    } */
+
 .city{
     font-size: 3vw;
     font-weight: 500;
@@ -21,6 +45,8 @@ html, body, .row, .container-fluid {
     background-color: #babec2;
     height: 100% ;
 }
+
+
 
 .card-deck .card{
     background-color:#587da5;
@@ -72,3 +98,5 @@ html, body, .row, .container-fluid {
     color: ivory;
     background-size: 100%;
     }
+
+
