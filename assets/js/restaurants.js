@@ -23,18 +23,32 @@ var numberOfCards = 3;
  * Return: DOM element
  */
 // Make the card
+// var makeCardDOM = function(restaurant){
+//   var cardDOM = document.createElement("div");
+//   cardDOM.innerHTML = 
+//   `<div id="card-${restaurant.id}">
+//     <h3 class="restaurant-name">${restaurant.name}</h3>
+//     <div class="restaurant-cuisine">${restaurant.cuisines}</div>
+//     <div class="restaurant-address">Address: ${restaurant.location.address}</div>
+//     <div class="restaurant-timings">Schedule: ${restaurant.timings}</div>
+//     <a class="restaurant-url" href=${restaurant.url}>Website</a>
+//     <div class="restaurant-tele">Telephone: ${restaurant.phone_numbers}</div>
+//   </div>`;
+//   return cardDOM; 
+// };
 var makeCardDOM = function(restaurant){
-  var cardDOM = document.createElement("div");
-  cardDOM.innerHTML = 
-  `<div id="card-${restaurant.id}">
-    <h3 class="restaurant-name">${restaurant.name}</h3>
-    <div class="restaurant-cuisine">${restaurant.cuisines}</div>
-    <div class="restaurant-address">Address: ${restaurant.location.address}</div>
-    <div class="restaurant-timings">Schedule: ${restaurant.timings}</div>
-    <a class="restaurant-url" href=${restaurant.url}>Website</a>
-    <div class="restaurant-tele">Telephone: ${restaurant.phone_numbers}</div>
-  </div>`;
-  return cardDOM; 
+  var liDOM = document.createElement("li");
+  liDOM.setAttribute("id", `card-${restaurant.id}`);
+  liDOM.innerHTML = 
+  `<div class="restaurant-name collapsible-header">${restaurant.name}</div>
+    <div class="collapsible-body">
+      <div class="restaurant-cuisine">${restaurant.cuisines}</div>
+      <div class="restaurant-address">Address: ${restaurant.location.address}</div>
+      <div class="restaurant-timings">Schedule: ${restaurant.timings}</div>
+      <a class="restaurant-url" href=${restaurant.url}>Website</a>
+      <div class="restaurant-tele">Telephone: ${restaurant.phone_numbers}</div>
+    </div>`;
+  return liDOM; 
 };
 
 // Render 3 cards to DOM
@@ -49,7 +63,8 @@ var make3Cards = function (restaurants, index) {
 
 /**
  * Function to make display more button display the next 3 from localStorage
- */
+*/
+console.log(displayMoreRestaurants)
 displayMoreRestaurants.addEventListener("click", function(){
   var localRestaurants = JSON.parse(window.localStorage.getItem("restaurants"));
   var localIndex = parseInt(window.localStorage.getItem('index'));
@@ -79,7 +94,6 @@ var getRestaurants = function(zipToLat, zipToLon){
       areaCuisineArray.push(response.cuisines[i].cuisine.cuisine_name);
       areaCuisineList = areaCuisineArray.join(", ");
       if (response.cuisines[i].cuisine.cuisine_name == obj.cuisines) {
-        console.log(response.cuisines[i].cuisine.cuisine_name);
         noCuisineMatch = true;
         var userCuisineID = response.cuisines[i].cuisine.cuisine_id
         console.log(userCuisineID)
@@ -111,12 +125,21 @@ var getRestaurants = function(zipToLat, zipToLon){
       modalDOM.innerHTML = `
       <div id="modal1" class="modal bottom-sheet">
         <div class="modal-content">
-          <h3>There aren't any restaurants nearby for that cuisine!</h3>
-          <h4>Here are the cuisines available in your area:</h4>
-          <ul id="button-list"></ul>
+          <h3>There aren't any restaurats nearby for that cuisine! You can either:</h3>
+          <div class="row">
+            <div class="col s6">
+              <h4>Choose from the available cuisines in the area,</h4>
+              <ul id="button-list"></ul>
+            </div>
+            <div class="col s1">
+              <h4>or</h4>
+            </div>
+            <div class="col s5">
+              <h4 href="#!" class="modal-close"><a href="#!">Continue anyways to view recipies for this search</a></h4>
+            </div>
+          </div>
         </div>
           <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Continue anyways to view recipies for this search</a>
             <a href="index.html" class="modal-close waves-effect waves-green btn-flat">Go back to search menu</a>
           </div>
         </div>
@@ -125,15 +148,17 @@ var getRestaurants = function(zipToLat, zipToLon){
       for (var j = 0; j < areaCuisineArray.length; j++) {
         var cuisineButtons = document.createElement("button");
         cuisineButtons.setAttribute(`id`, `cuisine-button-${[j]}`);
+        // cuisineButtons.setAttribute(`class` , `btn`);
         buttonList.appendChild(cuisineButtons);
 
         cuisineButtons.textContent = areaCuisineArray[j];
-        cuisineButtons.innerHTML = `
-        <a href="${`indexA.html?&lat=${obj.lat}&lon=${obj.lon}&cuisines=${cuisineButtons.textContent}`}">${areaCuisineArray[j]}</a>`
+        cuisineButtons.innerHTML = `<a href="${`indexA.html?&lat=${obj.lat}&lon=${obj.lon}&cuisines=${cuisineButtons.textContent}`}">${areaCuisineArray[j]}</a>`
       }
       var elem = document.querySelector('#modal1');
       var instance = M.Modal.init(elem);
       instance.open();
+
+      displayMoreRestaurants.style.visibility = "hidden";
     };
   });
 };
