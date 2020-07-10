@@ -12,9 +12,7 @@ html, body, .row, .container-fluid {
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url(../images/hero.jpg);
-    height: 450px;
-    display: grid;
-    align-items: flex-end;
+  
    
     
 }
