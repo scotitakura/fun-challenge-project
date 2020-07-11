@@ -5,6 +5,14 @@ html, body, .row, .container-fluid {
     
 }
 
+.box-all{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+
+    
 
 
 .hero-image{
@@ -13,6 +21,7 @@ html, body, .row, .container-fluid {
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url(../images/hero.jpg);
+    flex: 1 1 auto;
     
 }
 
