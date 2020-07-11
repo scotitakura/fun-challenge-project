@@ -1,7 +1,6 @@
-var userKeySpoon = "b5e59112c87d42bb81a57a4b4431b76e";
+var userKeySpoon = "cb9facbe53274666a1b2e4f0f400d826";
 let displayMore = document.querySelector('#display-more > button');
 var displayMoreRecipes = document.querySelector('#display-more-recipes');
-var displayMoreRestaurants = document.querySelector("#display-more-restaurants");
 
 var numberOfRecipeCards = 3;
 
@@ -49,7 +48,7 @@ function getID(recipeId) {
     })
 };
 
-displayMoreRestaurants.addEventListener('click', function(event){
+displayMoreRecipes.addEventListener('click', function(event){
     let recipes = JSON.parse(window.localStorage.getItem('recipes'));
     let index = parseInt(window.localStorage.getItem('index'));
     console.log(index);
@@ -116,5 +115,4 @@ var allAccordions = document.querySelectorAll('.collapsible'); // finds all acco
 var instance = M.Collapsible.init(allAccordions, {
   accordion: false
 });
-
-//M.toast({html: 'Craving some Sushi?'})      
+   

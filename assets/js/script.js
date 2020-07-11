@@ -27,7 +27,8 @@ function userAlert(message) {
 };
 
 // at onClick of Search button collect information for local storage
-searchButton.addEventListener("click", function (){
+searchButton.addEventListener("click", function (event){
+  event.preventDefault();
   var userCuisineName = document.querySelector("#user-food-input").value
   var userZipInput = document.querySelector("#user-zipcode-input").value
   if(userCuisineName && userZipInput) {
@@ -95,20 +96,9 @@ function toastSuggestion() {
 // call function to show Toast at load
 toastSuggestion();
 
-// $.getJSON('http://ip-api.com/json?callback=?', function(data) {
-//   console.log(JSON.stringify(data.zip));
-//   var geoZip = document.querySelector("#user-zipcode-input");
-
-
-// document.getElementById("user-zipcode-input").addEventListener('click', function () {
-//     var text = document.getElementById('text');
-//     text.value += ' after clicking';
-// });
-
-// });
-
-// event for Geolocation button
-document.getElementById("geolocate").addEventListener('click', function () {
+//////////////////////////// Geolocation button /////////////////////////////
+document.getElementById("geolocate").addEventListener('click', function (event) {
+  event.preventDefault();
   // gets IP of the user
   $.getJSON('http://ip-api.com/json?callback=?', function(data) {
   console.log(JSON.stringify(data.zip));
