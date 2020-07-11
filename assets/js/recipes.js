@@ -1,6 +1,7 @@
 var userKeySpoon = "b5e59112c87d42bb81a57a4b4431b76e";
 let displayMore = document.querySelector('#display-more > button');
 var displayMoreRecipes = document.querySelector('#display-more-recipes');
+var displayMoreRestaurants = document.querySelector("#display-more-restaurants");
 
 var numberOfRecipeCards = 3;
 
@@ -48,7 +49,7 @@ function getID(recipeId) {
     })
 };
 
-displayMoreRecipes.addEventListener('click', function(event){
+displayMoreRestaurants.addEventListener('click', function(event){
     let recipes = JSON.parse(window.localStorage.getItem('recipes'));
     let index = parseInt(window.localStorage.getItem('index'));
     console.log(index);

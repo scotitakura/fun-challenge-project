@@ -94,3 +94,28 @@ function toastSuggestion() {
 
 // call function to show Toast at load
 toastSuggestion();
+
+// $.getJSON('http://ip-api.com/json?callback=?', function(data) {
+//   console.log(JSON.stringify(data.zip));
+//   var geoZip = document.querySelector("#user-zipcode-input");
+
+
+// document.getElementById("user-zipcode-input").addEventListener('click', function () {
+//     var text = document.getElementById('text');
+//     text.value += ' after clicking';
+// });
+
+// });
+
+// event for Geolocation button
+document.getElementById("geolocate").addEventListener('click', function () {
+  // gets IP of the user
+  $.getJSON('http://ip-api.com/json?callback=?', function(data) {
+  console.log(JSON.stringify(data.zip));
+  var geoZip = JSON.stringify(data.zip);
+  var zipDisplay = document.getElementById('user-zipcode-input');
+  // puts string into text input, with '' removed
+  zipDisplay.value += geoZip.replace(/^"(.*)"$/, '$1');
+  });
+});
+

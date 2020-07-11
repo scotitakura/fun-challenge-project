@@ -31,18 +31,23 @@
               <h3 class="center-align"> What would you like to eat?</h3>
               <i class="material-icons prefix"></i>
               <p class="center-align">
-                <input class="center-align" id="user-food-input" style = "width:100%" placeholder="e.g. Pizza" class="materialize-textarea">
+                <input class="col 6 center-align" id="user-food-input" style = "width:100%" placeholder="e.g. Pizza" class="materialize-textarea">
               </p>
             </div>
           </div>
 
-          <div class="row">  <!--zipcode-->
+          <div class="row center-align">  <!--zipcode-->
             <div class="input-field" id='zip'>
-              <h3 class="center-align">What is your Zipcode?</h3>
+              <h3>What is your Zipcode?</h3>
               <i class="material-icons prefix"></i>
-              <p class="center-align">
+              <div class="row valign-wrapper">
+                
                   <input class="center-align" id="user-zipcode-input" style = "width:100%" placeholder="e.g. 95020" class="materialize-textarea large">
-              </p>
+                  <button type="click" id="geolocate" class="right btn waves-effect waves-light grey darken-3">
+                    <i class="material-icons">location_searching</i>
+                  </button>
+                
+              </div>
             </div>
           </div>
 
@@ -107,6 +112,8 @@
     <script src="https://kit.fontawesome.com/326ee3d75f.js" crossorigin="anonymous"></script>
     <!-- link to Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- jQuery-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <!-- link to application script -->
     <script src="./assets/js/script.js"></script>
   </body>
