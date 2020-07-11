@@ -94,3 +94,16 @@ function toastSuggestion() {
 
 // call function to show Toast at load
 toastSuggestion();
+
+//////////////////////////// Geolocation button /////////////////////////////
+document.getElementById("geolocate").addEventListener('click', function (event) {
+  event.preventDefault();
+  // gets IP of the user
+  $.getJSON('http://ip-api.com/json?callback=?', function(data) {
+  console.log(JSON.stringify(data.zip));
+  var geoZip = JSON.stringify(data.zip);
+  var zipDisplay = document.getElementById('user-zipcode-input');
+  // puts string into text input, with '' removed
+  zipDisplay.value += geoZip.replace(/^"(.*)"$/, '$1');
+  });
+});
