@@ -1,8 +1,5 @@
 var zipAPIKey = "DKAL53OVWYNIRCSEKZZM";
 var searchButton = document.querySelector("#search-button");
-var clearButton = document.querySelector("#clear-button");
-var dishInput = document.querySelector("#user-food-input").value;
-var dishNameInputForm = document.querySelector("#search-button");
 
 // for alert modal
 var modalAlertCard = document.querySelector("#modal-display");
