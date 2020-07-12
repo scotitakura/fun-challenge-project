@@ -16,7 +16,7 @@ html, body, .row, .container-fluid {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url(../images/hero-1.jpg);
+    background-image: url(../images/hero1.jpg);
     flex: 1 1 auto;
     
 }
