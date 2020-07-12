@@ -1,31 +1,18 @@
-var userKeySpoon = "7e636ba8f56842a084ab317215640a3a";
-//"b5e59112c87d42bb81a57a4b4431b76e";
+var userKeySpoon = "b5e59112c87d42bb81a57a4b4431b76e";
 let displayMore = document.querySelector('#display-more > button');
 var displayMoreRecipes = document.querySelector('#display-more-recipes');
 
 var numberOfRecipeCards = 3;
 
-// neil
 var displayRecipeEl = document.querySelector("#recipe-display");
 
-// neil - takes title, image and link to display on page
 function displayRecipes(recipeTitle, recipeImg, recipeLink) {
-    //console.log(recipeTitle, recipeImg, recipeLink);
-    
-    //get needed variables
-    // var recipeCard = `
-    // <div class = "card">
-    // <a href = "${recipeLink}" class = ""><h3 class = "">${recipeTitle}</h3></a>
-    // </br>
-    // <a href = "${recipeLink}" class = ""><img src = "${recipeImg}"></a>  
-    // </div>
-    // `;
     var recipeLi = document.createElement('li');
     recipeLi.setAttribute("id", recipeTitle);
     recipeLi.innerHTML = `
         <div class="collapsible-header">${recipeTitle}</div>
         <div class="collapsible-body">
-            <a href = "${recipeLink}" class = ""><img src = "${recipeImg}"></a>  
+            <a href = "${recipeLink}" target="_blank"><img src = "${recipeImg}" style="height: 120px; width: 120px;"></a>  
             </div>
         </div>`;
     var recipeContainerAccordion = document.querySelector("#recipe-container");
