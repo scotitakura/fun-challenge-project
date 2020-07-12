@@ -14,6 +14,16 @@ html, body, .row, .container-fluid {
     flex-flow: column;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.header-title {
+    padding-left: 20px;
+}
+
 .hero-image {
     position: relative;
     background-size: cover;
@@ -127,6 +137,10 @@ html, body, .row, .container-fluid {
 }
 
 @media screen and (max-width: 768px) {
+    .indexA-main {
+        padding-top: 64px;
+    }
+
     .caption-border {
         clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
     }
