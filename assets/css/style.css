@@ -1,37 +1,40 @@
-* { padding: 0.001vw; margin: 0.001vw; }
+* {
+    padding: 0.001vw;
+    margin: 0.001vw;
+}
 
 html, body, .row, .container-fluid {
     height: 100%;
-    
+
 }
 
-.box-all{
+.box-all {
     height: 100%;
     display: flex;
     flex-flow: column;
 }
 
-.hero-image{
+.hero-image {
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    background-image: url(../images/hero1.jpg);
+    background-image: url(../images/hero.jpg);
     flex: 1 1 auto;
-    
+
 }
 
-.inputcard{
+.inputcard {
     border-radius: 20px;
     margin: 20px;
     padding: 10px;
 }
 
-.btn{
+.btn {
     border-radius: 5px;
 }
 
-.onimage{
+.onimage {
     border-radius: 20px;
 
 }
@@ -45,40 +48,41 @@ html, body, .row, .container-fluid {
     color: #074779;
 }
 
-.city{
+.city {
     font-size: 3vw;
     font-weight: 500;
 }
-#search-bar{
+
+#search-bar {
     background-color: #babec2;
-    height: 100% ;
+    height: 100%;
 }
 
-.card-deck .card{
-    background-color:#587da5;
-    color:white;
+.card-deck .card {
+    background-color: #587da5;
+    color: white;
     padding: 1vw;
 }
 
-.favorable{
+.favorable {
     background-color: #28A745;
-    color:white;
+    color: white;
     padding: 0.8vw;
 }
 
-.moderate{
+.moderate {
     background-color: #FFC108;
-    color:white;
+    color: white;
     padding: 0.8vw;
 }
 
-.severe{
+.severe {
     background-color: #DC3545;
-    color:white;
+    color: white;
     padding: 0.8vw;
 }
 
-.cityButtons{
+.cityButtons {
     background-color: white;
     border: 0.1vw solid rgb(179, 175, 175);
     text-align: left;
@@ -87,11 +91,11 @@ html, body, .row, .container-fluid {
 
 }
 
-#search-history{
-   display: flex;
+#search-history {
+    display: flex;
 }
 
-#city-input{
+#city-input {
     position: relative;
     left: 1vw;
 }
