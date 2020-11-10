@@ -1,73 +1,68 @@
-# fun-challenge-project: 
+# The Craver
 
-*This is the team 1 front-end development challenge project. Theresa, Neil, Anita, Scot and Priya are members of this project
- We used all the front end tools we learnt and materialize to develop this nifty webapp.*
+![GitHub license](https://img.shields.io/badge/license-None-blue.svg)
 
-## User Story
+## Table of Contents
+* [Description](#description)
 
-```text
-AS A person who is hungry and interested in good food
-I WANT to get a few options to eat food
-SO THAT I can eat according to my tastes at that time
-```
+* [Preview](#preview)
 
-# Acceptance Criteria
+* [Usage](#usage)
 
-```text
-GIVEN a dashboard with form inputs
-WHEN I search for food by name and my current location zipcode
-THEN I am presented with a link to the recipe for the food I selected and recommendations for restaurants in the area (via Zomato where other foodies provide feedback) 
-WHEN I view the recipe
-THEN I am can explore the details of the recipe that will allow me to decide if I can make this food 
-WHEN I view the restaurant recommendations
-THEN I am provided information on the name and other restaurant details that allow me to decide if I want to eat at that restaurant.
-WHEN I click on a food or zipcode in the search history
-THEN I am again presented with recipes and restaurant recommendations
-```
+* [Contributers](#contributers)
 
-## Mock-Up
-The following image shows the web application's appearance and functionality:
+* [Way Ahead](#way-ahead)
+
+* [Questions](#questions)
+
+## Description
+
+The Craver is a simple search application using restful API's to help you decide what to eat.  If you know what you want to eat, but are unsure if you want to cook or dine out, the craver will give you an assortment of recipes and nearby restaurants to satisfy your craving. This app is fully responsive to all screentypes and displays the lists on a clean colapsible style list.  It has a polished look for the landing page and makes deciding what to have for dinner easy!
+
+* You can view deployed site at https://ngdino.github.io/fun-challenge-project/
+
+## Preview 
+
+* Landing Page
+
+![landing Page](./assets/images/screenshot1.jpg)
+
+* Search Results
+
+![Search Results](./assets/images/screenshot2.jpg)
+
+* Mobile View
+
+![Mobile View](./assets/images/screenshot3.jpg)
+
+## Usage
+ 
+ This is a front end project no installation is necessary.  You can use at our deployed site https://ngdino.github.io/fun-challenge-project/ or simply clone or fork this repository, open locally, and right click and click view in default browser.
+
+## Contributors
+
+* Scot Itakura - Design of search results page, zomato api call for restaurants.
+https://github.com/scotitakura
+
+* Neil Dino - Design of landing page, recipe search JS file paircoded with Theresa, cleanup and README.
+https://github.com/NGDino
+
+* Anita Ganti- Zip code search API, search form
+https://github.com/anitapeppercornhttps://github.com/anitapeppercorn
+
+*Priya Ravi - Priya is an experienced front end developer.  She helped with repository oversite, debugging and helping the team with any questions
+https://github.com/priyaravi23
+
+* Theresa Nguyen - Pair coded Spoonacular API call and rest of Recipe Search JS file with Neil.
+https://github.com/franamaus
 
 
-## Grading Requirements
-This project is graded based on the following criteria:
+## Way Ahead
+ This project was completed to meet all grading requirements of the Front End Project for UC Berkeley Extension Coding Bootcamp.  It was accomplished during a two week sprint and was for most contributors our first time working as a team on a shared repository.  If this project was to have improvements made we would do the following: 
+ * fix the message stating the restaurant type is not found after searching.
+ * add gps capibility to find your location
+ * add click to navigate functionality
+ * show reviews for restaurants and recipes
 
-### Technical Acceptance Criteria: 25%
-
-Satisfies the following code requirements:
-Application uses at least two server-side APIs.
-Application uses client-side storage to store persistent data.
-Application doesn't use JS alerts, prompts, or confirms (uses modals instead).
-Application uses a CSS framework other than Bootstrap.
-Application is interactive (accepts and responds to user input)
-
-### Concept 10%
-
-Application should be a unique and novel idea.
-Your group should clearly and concisely articulate your project idea.
-
-### Deployment: 20%
-Application deployed at live URL and loads with no errors.
-Application GitHub URL submitted.
-Portfolio at live URL submitted, featuring project.
-
-### Repository Quality: 10%
-Repository has a unique name.
-Repository follows best practices for file structure and naming conventions.
-Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-Repository contains multiple descriptive commit messages.
-Repository contains a quality README file with description, screenshot, and link to deployed application.
-
-### Application Quality: 15%
-Application user experience is intuitive and easy to navigate.
-Application user interface style is clean and polished.
-Application is responsive.
-
-### Presentation 10%
-Your group should present using Powerpoint or a similar presentation software.
-Every group member should speak during the presentation.
-Your presentation should follow the Project Presentation Template
- (Links to an external site.)
-
-### Collaboration 10%
-There are no major disparities in the number of GitHub contributions between group members.
+ ## Questions 
+ If you have questions about this project, or if you would like to contribute, visit our repo at [GitHub](https://github.com/scotitakura/fun-challenge-project) or contact Neil directly at <n.dino90@gmail.com>.

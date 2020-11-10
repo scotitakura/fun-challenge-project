@@ -29,6 +29,7 @@ function getID(recipeId) {
           var recipeTitle = recipeInfo.title;
           var recipeImg = recipeInfo.image;
           var recipeLink = recipeInfo.sourceUrl;
+
           displayRecipes(recipeTitle, recipeImg, recipeLink);
         })
       }
